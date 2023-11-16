@@ -4609,9 +4609,11 @@ class Make
         //totalizador generico
         $this->stdTot->vFCPST += (float) !empty($std->vFCPST) ? $std->vFCPST : 0;
         $this->stdTot->vFCPSTRet += (float) !empty($std->vFCPSTRet) ? $std->vFCPSTRet : 0;
+        if (in_array($std->CSOSN, ['101', '102', '103', '300', '400', '201', '202', '203', '500', '900'])) {
+            $icmsSN = $this->dom->createElement("ICMSSN$std->CSOSN");
+        }
         switch ($std->CSOSN) {
             case '101':
-                $icmsSN = $this->dom->createElement("ICMSSN101");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
@@ -4646,7 +4648,6 @@ class Make
             case '103':
             case '300':
             case '400':
-                $icmsSN = $this->dom->createElement("ICMSSN102");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
@@ -4666,7 +4667,6 @@ class Make
                 $this->stdTot->vBCST += (float) !empty($std->vBCST) ? $std->vBCST : 0;
                 $this->stdTot->vST += (float) !empty($std->vICMSST) ? $std->vICMSST : 0;
 
-                $icmsSN = $this->dom->createElement("ICMSSN201");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
@@ -4767,7 +4767,6 @@ class Make
                 $this->stdTot->vBCST += (float) !empty($std->vBCST) ? $std->vBCST : 0;
                 $this->stdTot->vST += (float) !empty($std->vICMSST) ? $std->vICMSST : 0;
 
-                $icmsSN = $this->dom->createElement("ICMSSN202");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
@@ -4849,7 +4848,6 @@ class Make
                 );
                 break;
             case '500':
-                $icmsSN = $this->dom->createElement("ICMSSN500");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
@@ -4951,7 +4949,6 @@ class Make
                 $this->stdTot->vICMS += (float) !empty($std->vICMS) ? $std->vICMS : 0;
                 $this->stdTot->vBCST += (float) !empty($std->vBCST) ? $std->vBCST : 0;
                 $this->stdTot->vST += (float) !empty($std->vICMSST) ? $std->vICMSST : 0;
-                $icmsSN = $this->dom->createElement("ICMSSN900");
                 $this->dom->addChild(
                     $icmsSN,
                     'orig',
